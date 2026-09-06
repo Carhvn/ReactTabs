@@ -1,4 +1,4 @@
-import Button from "../ButtonFolder/Button";
+import Button from "../components/Button/Button";
 import { useNavigate } from "react-router";
 import "./WelcomePage.css";
 export default function WelcomePage() {

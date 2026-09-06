@@ -1,6 +1,11 @@
-import Button from "../ButtonFolder/Button";
+import Button from "../Button/Button";
+export type Tab = "posts" | "users" | "comments"
+interface TabSectionProps { 
+  active: Tab,
+  onChange: (tab: Tab) =>  void
+}
 
-export default function TabSection({ active, onChange }) {
+export default function TabSection({ active, onChange }: TabSectionProps) {
   return (
     <section>
       <Button isActive={active === "posts"} onClick={() => onChange("posts")}>
