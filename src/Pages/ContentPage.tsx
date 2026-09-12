@@ -4,6 +4,7 @@ import TabSection from "../components/Tabs/TabSection";
 import Users from "../components/Users/Users";
 import { useState } from "react";
 import type { Tab } from "../components/Tabs/TabSection";
+import Favorites from "../components/Favorites/Favorites";
 export default function ContentPage() {
   const [tab, setTab] = useState<Tab>("users");
   return (
@@ -13,6 +14,7 @@ export default function ContentPage() {
       {tab === "users" && <Users />}
       {tab === "comments" && <Comments />}
       {tab === "posts" && <Posts />}
+      {tab === "favorites" && <Favorites />}
     </section>
   );
 }

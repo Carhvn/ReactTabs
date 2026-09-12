@@ -1,20 +1,13 @@
-import type { Comment } from "../../Types/api";
-import useFetch from "../../hooks/useFetch";
+import { useGetPostCommentsQuery } from "../../services/jsonPlaceholderApi";
 import RequestStatus from "../RequestStatus/RequestStatus";
-export default function PostComments({ postId }: {postId: number}) {
-  
-  const postCommentsRequest = useFetch<Comment[]>(
-    `https://jsonplaceholder.typicode.com/comments?postId=${postId}`,
-    []
-  )
+export default function PostComments({ postId }: { postId: number }) {
 
-  const comments = postCommentsRequest.data;
-  const loading = postCommentsRequest.loading;
-  const error = postCommentsRequest.error
-  
+  const { data: comments = [], isLoading, error } = useGetPostCommentsQuery(postId)
+
+
   return (
     <section>
-      <RequestStatus loading={loading} error={error}/>
+      <RequestStatus loading={isLoading} error={error ? "Error" : null} />
       <p style={{ marginBottom: "1rem" }}>Комментарии поста: {postId}</p>
       <ul>
         {comments.map((comment) => (

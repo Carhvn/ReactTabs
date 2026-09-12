@@ -1,14 +1,14 @@
-interface RequestStatusProps { 
+interface RequestStatusProps {
     error: string | null;
     loading: boolean;
 }
 
-export default function RequestStatus({error, loading}: RequestStatusProps) { 
-    if (loading) { 
+export default function RequestStatus({ error, loading }: RequestStatusProps) {
+    if (loading) {
         return (
             <p>Loading...</p>
         )
-    } if (error) { 
+    } if (error) {
         return (
             <p>{error}</p>
         )

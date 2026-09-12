@@ -1,8 +1,8 @@
 import Button from "../Button/Button";
-export type Tab = "posts" | "users" | "comments"
-interface TabSectionProps { 
+export type Tab = "posts" | "users" | "comments" | "favorites"
+interface TabSectionProps {
   active: Tab,
-  onChange: (tab: Tab) =>  void
+  onChange: (tab: Tab) => void
 }
 
 export default function TabSection({ active, onChange }: TabSectionProps) {
@@ -19,6 +19,12 @@ export default function TabSection({ active, onChange }: TabSectionProps) {
         onClick={() => onChange("comments")}
       >
         Комментарии
+      </Button>
+      <Button
+        isActive={active === "favorites"}
+        onClick={() => onChange("favorites")}
+      >
+        Избранные
       </Button>
     </section>
   );

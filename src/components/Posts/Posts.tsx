@@ -1,21 +1,16 @@
 import PostItem from "./PostItem";
-import type { Post } from "../../Types/api";
-import useFetch from "../../hooks/useFetch";
+import { useGetPostsQuery } from "../../services/jsonPlaceholderApi";
 import RequestStatus from "../RequestStatus/RequestStatus";
 export default function Posts() {
-    const postsRequest = useFetch<Post[]>(
-        "https://jsonplaceholder.typicode.com/posts",
-      []
-    );
 
-    const posts = postsRequest.data;
-    const loading = postsRequest.loading;
-    const error = postsRequest.error;
+
+  const { data: posts = [], isLoading, error } = useGetPostsQuery();
+
 
   return (
     <section>
       <h2>Посты</h2>
-      <RequestStatus loading={loading} error={error}/>
+      <RequestStatus loading={isLoading} error={error ? "Error" : null} />
       <ul>
         {posts.map((post) => (
           <PostItem key={post.id} post={post} />

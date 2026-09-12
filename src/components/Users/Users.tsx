@@ -1,21 +1,13 @@
-import type { User } from "../../Types/api";
-import useFetch from "../../hooks/useFetch";
+import { useGetUsersQuery } from "../../services/jsonPlaceholderApi";
 import RequestStatus from "../RequestStatus/RequestStatus";
 export default function Users() {
-  
-  const userRequest = useFetch<User[]>(
-     "https://jsonplaceholder.typicode.com/users",
-    []
-  )
 
-  const users = userRequest.data;
-  const loading = userRequest.loading;
-  const error = userRequest.error
 
+  const { data: users = [], isLoading, error } = useGetUsersQuery()
   return (
     <section>
       <h2>Пользователи</h2>
-      <RequestStatus loading={loading} error={error}/>
+      <RequestStatus loading={isLoading} error={error ? "Error" : null} />
       <ul>
         {users.map((user) => (
           <li key={user.id}>
