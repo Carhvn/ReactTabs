@@ -1,20 +1,20 @@
 import type { Comment } from "../../Types/api";
+import { API_URL } from "../../constants/api";
 import useFetch from "../../hooks/useFetch";
 import RequestStatus from "../RequestStatus/RequestStatus";
-export default function PostComments({ postId }: {postId: number}) {
-  
+export default function PostComments({ postId }: { postId: number }) {
   const postCommentsRequest = useFetch<Comment[]>(
-    `https://jsonplaceholder.typicode.com/comments?postId=${postId}`,
-    []
-  )
+    `${API_URL}/comments?postId=${postId}`,
+    [],
+  );
 
   const comments = postCommentsRequest.data;
   const loading = postCommentsRequest.loading;
-  const error = postCommentsRequest.error
-  
+  const error = postCommentsRequest.error;
+
   return (
-    <section>
-      <RequestStatus loading={loading} error={error}/>
+    <div>
+      <RequestStatus loading={loading} error={error} />
       <p style={{ marginBottom: "1rem" }}>Комментарии поста: {postId}</p>
       <ul>
         {comments.map((comment) => (
@@ -27,6 +27,6 @@ export default function PostComments({ postId }: {postId: number}) {
           </li>
         ))}
       </ul>
-    </section>
+    </div>
   );
 }

@@ -1,12 +1,9 @@
 import type { Comment } from "../../Types/api";
+import { API_URL } from "../../constants/api";
 import useFetch from "../../hooks/useFetch";
 import RequestStatus from "../RequestStatus/RequestStatus";
 export default function Comments() {
-  
-  const commentsRequest = useFetch<Comment[]>(
-     "https://jsonplaceholder.typicode.com/comments",
-    []
-  )
+  const commentsRequest = useFetch<Comment[]>(`${API_URL}/comments`, []);
 
   const comments = commentsRequest.data;
   const loading = commentsRequest.loading;
@@ -15,7 +12,7 @@ export default function Comments() {
   return (
     <section>
       <h2>Комментарии</h2>
-      <RequestStatus loading={loading} error={error}/>
+      <RequestStatus loading={loading} error={error} />
       <ul>
         {comments.map((comment) => (
           <li key={comment.id}>

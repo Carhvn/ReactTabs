@@ -9,7 +9,7 @@ export default function ContentPage() {
   return (
     <section>
       <h1>Контент</h1>
-      <TabSection active={tab} onChange={(current) => setTab(current)} />
+      <TabSection active={tab} onChange={setTab} />
       {tab === "users" && <Users />}
       {tab === "comments" && <Comments />}
       {tab === "posts" && <Posts />}
