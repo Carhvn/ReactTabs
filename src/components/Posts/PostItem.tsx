@@ -1,7 +1,10 @@
 import { useState } from "react";
-import Button from "../ButtonFolder/Button";
+import Button from "../Button/Button";
 import PostComments from "./PostComments";
-export default function PostItem({ post }) {
+import type { Post } from "../../Types/api";
+
+
+export default function PostItem({ post }: {post: Post}) {
   const [isOpen, setIsOpen] = useState(false);
 
   function handleClick() {

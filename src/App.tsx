@@ -1,6 +1,6 @@
-import { Routes, Route } from "react-router";
-import ContentSection from "./components/Section/ContentSection";
-import WelcomePage from "./components/Pages/WelcomePage";
+import { Routes, Route } from "react-router-dom";
+import ContentSection from "./Pages/ContentPage";
+import WelcomePage from "./Pages/WelcomePage";
 export default function App() {
   return (
     <Routes>
